@@ -1,0 +1,63 @@
+{% extends "layout2.html" %}
+
+{% block nav_ending %}template2{% endblock %}
+
+{% block nav %}
+{{ super() }}
+
+
+{% endblock %}
+
+{% block main %}
+
+
+<ul>
+{% for fruit in my_fruit_list %}
+    {% if fruit == "limes" %}
+        <li style="color:green;font-size:2em">{{fruit}}</li>
+    {% else %}
+        <li>{{fruit}}</li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+<ul>
+{% for person in my_person_list %}
+    <li>{{person.name}} | {{person.age}}</li>
+{% endfor %}
+</ul>
+
+<dl>
+{% for person in my_person_list %}
+    <dt>Name:
+        <a href="\">{{person.name}}</a>
+    </dt>
+    <dd>Age:
+        {{person.age}}
+    </dd>
+{% endfor %}
+</dl>
+
+{% macro nav_link(name, age) %}
+    <dt>Name:
+        <a href="\">{{name}}</a>
+    </dt>
+    <dd>Age:
+        {{age}}
+    </dd>
+{% endmacro %}
+
+<dl>
+{% for person in my_person_list %}
+    {{ nav_link(person.name, person.age) }}
+{% endfor %}
+</dl>
+
+
+
+
+{% endblock %}
+
+
+
+
