@@ -12,5 +12,10 @@ def template():
     print(my_person_list[1]['name'])
     return render_template('template.html', my_fruit_list=my_fruit_list, my_person_list=my_person_list)
 
+@app.route("/contact_me")
+def contact_me():
+
+    return render_template('contact_me.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
