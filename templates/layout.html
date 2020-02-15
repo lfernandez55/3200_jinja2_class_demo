@@ -4,8 +4,11 @@
 <html>
 
 <head>
-  <title>Books!!</title>
+  <title>Jinja Demo</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/static/my.css" >
+
   <style>
   .card{margin-top: 10px}
   .container{margin-top: 10vh}
@@ -25,8 +28,14 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
-            {{ nav_link('template', 'Home') }}
+            {{ nav_link('home', 'Home') }}
             {{ nav_link('contact_me', 'Contact Me') }}
+            {# TODO: nav_link macro doesn't accomodate routes like grades that pass parameters, eventually need to enhance it #}
+            {% if request.endpoint.endswith('grades') %}
+              <li class="nav-item " ><a class="nav-link active" href="{{ url_for('grades', column_name='name') }}">Grades </a></li>
+            {% else %}
+              <li class="nav-item " ><a class="nav-link inactive" href="{{ url_for('grades', column_name='name') }}"> Grades</a></li>
+            {% endif %}
       </ul>
 
     </div>
@@ -37,18 +46,16 @@
 
 
   <div class="container">
-
-
-
    <div class="row">
-     <div class="col-md-12">
+     <div class="col-md-4">
+     </div>
+     <div class="col-md-4">
          {% block main %}
          {% endblock %}
      </div>
+     <div class="col-md-4">
+     </div>
    </div>
-
-
-
   </div>
 
 

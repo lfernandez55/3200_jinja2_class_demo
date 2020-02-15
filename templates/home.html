@@ -1,8 +1,11 @@
 {% extends "layout.html" %}
 
 {% block main %}
+<h1>Some JINJA2 Exercises/Demos:</h1>
 
+<hr>
 <ul>
+ <h3>Iterate through a list and use a conditional:</h3>
 {% for fruit in my_fruit_list %}
     {% if fruit == "limes" %}
         <li style="color:green;font-size:2em">{{fruit}}</li>
@@ -12,7 +15,8 @@
 {% endfor %}
 </ul>
 
-
+<hr>
+<h3>Iterate through a list of dictionaries:</h3>
 <dl>
 {% for person in my_person_list %}
     <dt>Name:
@@ -24,13 +28,22 @@
 {% endfor %}
 </dl>
 
-
-
+<hr>
+<h3>Macro Demo:</h3>
 <dl>
 {% for person in my_person_list %}
     {{ my_macro(person.name, person.age) }}
 {% endfor %}
 </dl>
+
+<hr>
+<h3>Sort By Name:</h3>
+{# https://jinja.palletsprojects.com/en/2.11.x/templates/#builtin-filters #}
+{% for person in my_person_list | sort(attribute="name") %}
+    {{ my_macro(person.name, person.age) }}
+{% endfor %}
+</dl>
+
 
 {% endblock %}
 
