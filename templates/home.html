@@ -44,6 +44,26 @@
 {% endfor %}
 </dl>
 
+<hr>
+<h3>Assigning variables and comparing strings and ints in Jinja:</h3>
+
+{% set my_string = '5' %}
+{% set my_int = 5 %}
+
+my_string: {{ my_string }}<br>
+my_int: {{ my_int }}<br>
+
+{% if my_string == my_int    %}
+ my_string and my_int are equal<br>
+{% else %}
+ my_string and my_int are not equal but . . . .<br>
+{% endif %}
+
+{% if my_string == my_int | string    %}
+ my_string and "my_int | string" are equal<br>
+{% else %}
+ my_string and my_int are not equal<br>
+{% endif %}
 
 {% endblock %}
 
