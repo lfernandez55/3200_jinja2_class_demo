@@ -2,12 +2,58 @@
 
 {% block main %}
 
-<a  href="{{url_for('grades', column_name='name')}}">url_for('grades', column_name='name')</a><br><br>
+<table>
+    <thead>
+        <th><a  href="{{url_for('grades', column_name='name')}}">Names</a>
+        </th>
+        <th><a  href="{{url_for('grades', column_name='grade')}}">Grade</a>
+        </th>
+    </thead>
 
-<a  href="{{url_for('grades', column_name='grade')}}">url_for('grades', column_name='grade')</a><br><br>
+        {% for person in my_person_list | sort(attribute=column_sort_name)%}
+            <tr>
+                    {% if person.grade | int < 25 %}
+                        <td style="background-color: red;"><h5>{{person.name}}</h5></td>
+                    {% else %}
+                    <td>
+                        <h5>{{person.name}}</h5>
+                    </td>
+                    {% endif %}
+            
+                    {% if person.grade | int < 26 %}
+                    <td style="background-color: red;">
+                        <h5>{{person.grade}}</h5>
+                    </td>
+                    {% else %}
+                    <td>
+                        <h5>{{person.grade}}</h5>
+                    </td>
+                    {% endif %}
+            </tr>
+        {% endfor %}
+        
+    </tr>
+</table>
+
+{#
+<a  href="{{url_for('grades', column_name='name')}}">Names</a><br><br>
+
+<a  href="{{url_for('grades', column_name='grade')}}">Grade</a><br><br>
 
 column_name: {{column_sort_name}}<br><br>
 
+<ul>
+    {% for person in my_person_list %}
+    {% if fruit == "limes" %}
+        <li style="color:green;font-size:2em">{{fruit}}</li>
+    {% else %}
+        <li>{{person.name}}</li>
+    {% endif %}
+{% endfor %}
+</ul>
+
 my_person_list: {{my_person_list}}
+
+#}
 
 {% endblock %}

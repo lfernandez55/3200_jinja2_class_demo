@@ -1,6 +1,6 @@
 table{
   border-collapse: collapse;
-  border-spacing: 0; */
+  border-spacing: 0;
   display: inline;
   width: 100%;
   margin-top: 40px;
@@ -20,5 +20,13 @@ thead{
 
 tfoot{
   text-align: center;
+}
 
+a {
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
 }
